@@ -4,17 +4,14 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Messsages</title>
+  <title>Messages</title>
   <script>
     function parse() {
       jsonData = '[{"id":1,"content":"Do you really want to hurt me?","username":"Boy"},{"id":2,"content":"Do you really want to make me cry?","username":"George"}]';
-      
       var dataSet = JSON.parse(jsonData);
       var lineOne = dataSet[0].content + " " +dataSet[0].username;
       var lineTwo = dataSet[1].content + " " +dataSet[1].username;
-
       document.getElementById("messages").innerHTML = lineOne + "<br />" + lineTwo;
- 
     }
   </script>
 </head>
