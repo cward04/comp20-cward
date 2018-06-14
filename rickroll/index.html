@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Rick Roll</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+<h1 id="title">Rick Roll</h1>
+
+<video src="https://www.cs.tufts.edu/comp/20/rickroll.mp4" id="rickroll" controls></video>
+<div id="lyrics"></div>
+
+<script>
+	var video = document.getElementById("rickroll");
+	var lyrics = document.getElementById("lyrics");
+
+	video.addEventListener("timeupdate", function() {
+
+		if(video.currentTime < 9) {
+			lyrics.innerHTML = "<h3>You just got rickrolled!</h3>";
+		}
+
+		else if (video.currentTime > 9 && video.currentTime < 18){
+			lyrics.innerHTML = "<h3>Well if you're still listening you might as well learn the lyrics...</h3>";
+		}
+
+		else if (video.currentTime > 18 && video.currentTime < 34){
+			lyrics.innerHTML = "<h3>We're no strangers to love <br />You know the rules and so do I <br />A full commitment's what I'm thinking of <br />You wouldn't get this from any other guy</h3>";
+		}
+
+		else if(video.currentTime > 34 && video.currentTime < 42){
+			lyrics.innerHTML = "<h3> I just wanna tell you how I'm feeling <br /> Gotta make you understand</h3>";
+		}
+
+		else if(video.currentTime > 42 && video.currentTime < 60){
+			lyrics.innerHTML = "<h3>Never gonna give you up <br />Never gonna let you down <br />Never gonna run around and desert you <br />Never gonna make you cry <br />Never gonna say goodbye <br />Never gonna tell a lie and hurt you</h3>";
+		}
+
+		else if(video.currentTime > 60 && video.currentTime < 77){
+			lyrics.innerHTML = "<h3> We've known each other for so long <br />Your heart's been aching, but <br />You're too shy to say it <br />Inside, we both know what's been going on <br />We know the game and we're gonna play it</h3>";
+		}
+
+				else if(video.currentTime > 77 && video.currentTime < 84){
+			lyrics.innerHTML = "<h3> And if you ask me how I'm feeling <br />Don't tell me you're too blind to see</h3>";
+		}
+
+				else if(video.currentTime > 84 && video.currentTime < 102){
+			lyrics.innerHTML = "<h3> Never gonna give you up <br />Never gonna let you down <br />Never gonna run around and desert you <br />Never gonna make you cry <br />Never gonna say goodbye <br />Never gonna tell a lie and hurt you</h3>";
+		}
+
+				else if(video.currentTime > 102 && video.currentTime < 118){
+			lyrics.innerHTML = "<h3> Never gonna give you up <br />Never gonna let you down <br />Never gonna run around and desert you <br />Never gonna make you cry <br />Never gonna say goodbye <br />Never gonna tell a lie and hurt you</h3>";
+		}
+
+				else if(video.currentTime > 118 && video.currentTime < 136){
+			lyrics.innerHTML = "<h3> (Ooh, give you up) <br />(Ooh, give you up) <br />Never gonna give, never gonna give <br />(Give you up) <br />Never gonna give, never gonna give <br />(Give you up)</h3>";
+		}
+
+				else if(video.currentTime > 136 && video.currentTime < 153){
+			lyrics.innerHTML = "<h3> We've known each other for so long <br />Your heart's been aching, but <br />You're too shy to say it <br />Inside, we both know what's been going on <br />We know the game and we're gonna play it</h3>";
+		}
+
+				else if(video.currentTime > 153 && video.currentTime < 160){
+			lyrics.innerHTML = "<h3> I just wanna tell you how I'm feeling <br />Gotta make you understand</h3>";
+		}
+
+				else if(video.currentTime > 160 && video.currentTime < 212){
+			lyrics.innerHTML = "<h3> Never gonna give you up <br />Never gonna let you down <br />Never gonna run around and desert you <br />Never gonna make you cry <br />Never gonna say goodbye <br />Never gonna tell a lie and hurt you</h3>";
+		}
+		
+		else {
+			lyrics.innerHTML = "";
+		}
+	}, true);
+</script>
+</body>
+</html>	
