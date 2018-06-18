@@ -3,22 +3,15 @@
 <html>
 
 <head>
-  <meta charset="utf-8" />
-  <title>Messages</title>
-  <script>
-    function parse() {
-      jsonData = '[{"id":1,"content":"Do you really want to hurt me?","username":"Boy"},{"id":2,"content":"Do you really want to make me cry?","username":"George"}]';
-      var dataSet = JSON.parse(jsonData);
-      var lineOne = dataSet[0].content + " " +dataSet[0].username;
-      var lineTwo = dataSet[1].content + " " +dataSet[1].username;
-      document.getElementById("messages").innerHTML = lineOne + "<br />" + lineTwo;
-    }
-  </script>
+	<meta charset="utf-8" />
+	<title>Messages</title>
+	<script src="lab.js"></script>
+	<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body onload="parse()">
-  <h1>Messages</h1>
-  <div id="messages"></div>
+	<h1>Messages</h1>
+	<div id="messages"></div>
 </body>
 
 </html>

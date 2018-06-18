@@ -1,3 +1,9 @@
-1. I BELIEVE THAT ALL ASPECTS HAVE BEEN IMPLEMENTED CORRECTLY. MODIFIED THE 'MESSAGES' SECTION OF THE HTML WITH THE NECESSARY STRING.
-2. I DID NOT COLLABORATE OR DISCUSS THE ASSIGNMENT WITH ANYONE
-3. I SPENT ABOUT 2 HOURS ON THE ASSIGNMENT.
+1. I BELIEVE THAT EVERY ASPECT OF THIS LAB HAS BEEN IMPLIMENTED PROPERLY.
+
+2. I HAVE NOT COLLABORATED WITH ANYONE ON THIS ASSIGNMENT.
+
+3. ABOUT 1 HOUR.
+
+4. ANSWER TO IMPORTANT QUESTION...
+	
+	It is not possible to request data from a different origin (like http://messagehub.heroduapp.com/"), as the same origin policy prevents us from doing this.  Implimented to allow users to visit untrusted websites, this policy prevents our code from accesing the files from that different website. For making requests from my local machine, this is also not allowed because if web browsers were allowed to access files on your system, they could easily look at people's files and steal their information. Both of these measures were implimented in the hope of security for web browsing. 

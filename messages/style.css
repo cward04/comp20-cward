@@ -1,0 +1,17 @@
+/* style for messages page */
+
+body{
+	background-color: lightblue;
+}
+
+h1{
+	color: white;
+	font-size: 36pt;
+	text-align: center;
+}
+
+#messages{
+	text-align: center;
+	font-size: 24pt;
+	color: white;
+}
