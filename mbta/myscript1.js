@@ -56,7 +56,7 @@ function init() {
 
 				// to read in the JSON reads, looping through the stations array for link to data
 				var request = new XMLHttpRequest();
-				request.open("GET", 'https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=' + stations[i][3], true);
+				request.open("GET", 'https://mbtalab3.herokuapp.com/redline/schedule.json/?stop_id=' + stations[i][3], true);
 
 				request.onreadystatechange = function() {
 					if(request.readyState == 4 && request.status == 200) {
