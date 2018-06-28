@@ -64,7 +64,7 @@ function init() {
 						var json = JSON.parse(theString);
 
 						var schedule = '';
-						for(var j = 0; j < 10; j++){
+						for(var j = 0; j < (json.data).length; j++){
 							if(json.data != null && (json.data).length > 0){
 								schedule = schedule + '<br />' + 'Train ' + '' + (j+1) + ' Arrival: ' + json.data[j].attributes.arrival_time + '; Train ' + '' + (j+1) + ' Departure: ' + json.data[j].attributes.departure_time;
 								if(json.data[j].attributes.direction_id == '0')
