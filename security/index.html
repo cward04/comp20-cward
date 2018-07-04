@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<title>Web Security Report</title>
+	<meta charset="utf-8"/>
+</head>
+
+<body>
+	<h1>Introduction</h1>
+	<ul>
+		<li>For this project, I was hired to work as a security consultant to document potential security and privacy issues with a Node.js + Express + MongoDB web application. This web app allows users to 'check in' with their name, and the latitude and longitude, and then posts all of the check ins on the home page.</li>
+	</ul>
+
+	<h1>Methodology</h1>
+	<ul>
+		<li>My methodology for this project was to take the source code given to me, and put into a sublime file on my computer. First, I read through the file to see if there were any obvious vulnerabilities I could find simply by reading through. Next, I performed 'white-box' testing, which are attacks performed based upon hunches from reading the source code. I used a tool called Postman to execute my attacks, along with testing in my web browser of choice, Google Chrome, to see if my attacks had worked.</li>
+	</ul>
+
+	<h1>Abstract of Findings</h1>
+	<ul>
+		<li>As with most security issues, the vulnerabilities that I found stemmed from putting too much faith into the input from users of the web application, and assuming what the users put in was correct. One vulnerability lets an attacker run code that is written by the attacker, which could lead to unexplained behavior on the website for all its users. Another vulnerability is to the extraction of the application's stored data. The good news though is that these issues can be fixed relatively easily.</li>
+	</ul>
+
+
+	<h1>Issues Found</h1>
+	<ul>
+		<h2>Issue 1</h2>
+		<li>Issue: The first issue I found was the websites vulnerability to Cross-Site Scripting (XXS). </li>
+		<li>Location:Found on https://jordan-marsh.herokuapp.com/sendLocation</li>
+		<li>Severity of Issue: High. Cross-site Scripting is potentially extremely harmful. While I used it to reroute the client to a website that I enjoy reading, hackers with malicious intentions could use Cross-site Scripting to perform dangerous breaches of personal information, like stealing session cookies. A user could log on, and without knowing it, a hacker has their personal information and can impersonate the user.</li>
+		<li>Description of Issue: I found the issue in the source code, where it appeared as if the user input in the login field was not checked for malicious intentions (in fact, not checked at all). While the code checks for input errors with the lat and lng, it does not test the user input at all</li>
+		<img src="issue 1 code.png" width="500">
+		<li>Proof of Vulnerability: A video would work better here, but as I enter my info into the check in page then visit the home page, I briefly see the web page before being rerouted to the website I put into the javascript. Below is an image of what I put into postman before I did the steps above. When I visited the website on my browser, I was rerouted to a different website by my javascript.</li>
+		<img src="issue 1 postman.png" width="700">
+		<img src="issue 1 ringer.png" width="700">
+		<li>Resolution: The source code should at the very least check the user input in order to prevent user input from being interpreted as code. In this example, it could check for the "script" tag, or the "<" brackets</li>
+		
+		<h2>Issue 2</h2>
+		<li>Issue: The second issue I discovered was that the code is vulnerable to an sql injection attack.</li>
+		<li>Location: Found on https://jordan-marsh.herokuapp.com/checkins.json?login[$ne]=? (more on the query in a second)</li>
+		<li>Severity of Issue: High. A malicious user could steal all of the information stored in this database. While there is not much personal information stored in this website, if there were usernames and passwords, it would be very easy to acquire them.</li>
+		<li>Description of Issue: The code responds to an injection attack. The input that I typed into the web browser passes an object that becomes a mongodb query. This query is simply that the login is not equal to '?', which unless the login was equal to that, is always true. This allowed me to access the database, as seen below on the webpage. The source code is shown below, as it can be seen that "results" is always true, so it sends the database data.</li>
+		<img src="issue 2 code.png" width="500">
+		<li>Proof of Vulnerability: This web page is not supposed to display the database of json data; however, I was able to get it to display the data of those logging into the site using the methodology explained in the 'Description of Issue' section</li>
+		<img src="issue 2 browser.png" width="700">
+		<li>Resolution: The source code should make sure that any '$' symbols are stripped out of the input, so that you can pass the input to mongodb without worrying about malicious overwriting.</li>
+
+		<h2>Issue 3</h2>
+		<li>Issue: The third issue I found was again vulnerability to Cross-site Scripting (XSS) </li>
+		<li>Location: Found on https://jordan-marsh.herokuapp.com/submit</li>
+		<li>Severity of Issue: High. Similar reasoning as before, Cross-site Scripting is a major issue, as it casues massive security risks for other sites that use this site, as well as clients.</li>
+		<li>Description of Issue: I had already tries to Cross-site Script one of the POST's in the source code, so I figured I should try the other as well. And unfotunately, I got the same result. I simply placed a line of script into the login field, and to make sure it wasn't my previous attempt, I routed the home page to a new website, and it worked again. As it can be seen in the code below, there are no checks for the user input in the login field, so anything could be input by the user and the server would not know. A user could also keep inputting large fields of data into the input field, which could take up space in the database (not nearly as bad as Cross-site Scripting, but worth a mention).</li>
+		<img src="issue 3 code.png" width="500">
+		<li>Proof of Vulnerability: The two pictures below show what I did. I did a post in postman, and checked to see if my script had been sent through to the home page. When I visited the home page in my browser, I was sent to google.com, which is what my script was doing.</li>
+		<img src="issue 3 postman.png" width="700">
+		<img src="issue 3 google.png" width="700">
+		<li>Resolution: Just like before (as the code is very similar) we would just have to watch out for common script characters like '<' and 'script'. There must be some sort of check in place for the user input to make sure that it is not malicious.</li>
+	</ul>
+	<h1>Conclusion</h1>
+	<ul>
+		<li>There are issues with the way this web application is coded. While the issues that I found are perfectly fixible (and in fact not too difficult to do so, simply by placing checks for the user input to insure it is not malicious). It is obvious that a more detailed consultation is needed for this web app, as it could use black-box testing. While I mainly looked at the source code and tried to guess errors, there could be many more lurking under the hood of this app. While this app does not store very sensitive user information, if it did the reputation of this app could be tarnished forever if user data were stolen, so any investment into the security of this website would be worth it. Fortunately, these costs would most likely be less than $1000.</li>
+	</ul>
+</body>
+
+</html>
